@@ -16,8 +16,14 @@ void main(List<String> args) {
   if (args.length == 1 && (args[0] == '-h' || args[0] == '--help')) {
     print(argParser.usage);
   } else {
-    argParser.parse(args);
-    _generate(genOptions);
+    try {
+      argParser.parse(args);
+      _generate(genOptions);
+    } on FormatException catch (e) {
+      print('\u001b[31m[ERROR] easy colors: ${e.message}\u001b[0m');
+      print("");
+      print(argParser.usage);
+    }
   }
 }
 
@@ -25,32 +31,32 @@ void main(List<String> args) {
 ArgParser _generateArgParser(GeneratorOptions options) {
   final parser = ArgParser();
   parser.addOption(
+    'source-dir',
+    abbr: 'S',
+    defaultsTo: 'assets',
+    help: "Folder of the colors file.",
+    callback: (String x) => options.inputDir = x,
+  );
+  parser.addOption(
+    'source-file',
+    abbr: 's',
+    defaultsTo: 'colors.json',
+    help: "File .json with the colors.",
+    callback: (String x) => options.inputName = x,
+  );
+  parser.addOption(
     'output-dir',
     abbr: 'O',
     defaultsTo: 'lib/generated',
-    help: "The folder where is stored the generated file",
+    help: "Folder where the generated file is stored.",
     callback: (String x) => options.outputDir = x,
   );
   parser.addOption(
     'output-file',
     abbr: 'o',
     defaultsTo: 'gen_colors.g.dart',
-    help: "The name of the generated file",
+    help: "Name of the generated file",
     callback: (String x) => options.outputName = x,
-  );
-  parser.addOption(
-    'input-dir',
-    abbr: 'I',
-    defaultsTo: 'assets',
-    help: "The folder where the .json file with colors is stored",
-    callback: (String x) => options.inputDir = x,
-  );
-  parser.addOption(
-    'input-file',
-    abbr: 'i',
-    defaultsTo: 'colors.json',
-    help: "The name of the .json file in input",
-    callback: (String x) => options.inputName = x,
   );
   return parser;
 }
