@@ -18,14 +18,15 @@ String parseColor(dynamic value) {
     sValue = sValue.substring(1);
     // A valid hex color has length 6 or 8 (can have alpha or not)
     if (sValue.length != 6 && sValue.length != 8)
-      throw ParseException("Hex color must be in the form #FFCD5C5C or #CD5C5C");
+      throw ParseException(
+          "Hex color must be in the form #FFCD5C5C or #CD5C5C");
     if (sValue.length == 6) sValue = "FF$sValue";
 
     colorValue = "0x${sValue.toUpperCase()}";
   } else if (value is int) {
     colorValue = value.toString();
   } else
-    throw ParseException("A color value can be only a hex string or an int!");
+    throw ParseException("A color can be only a hex string or an int!");
   return "Color($colorValue)";
 }
 
