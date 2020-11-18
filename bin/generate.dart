@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 
-import 'src/generator_options.dart';
-import 'src/exceptions.dart';
-import 'src/parser.dart';
-import 'src/writer.dart';
+import '../lib/src/generator/generator_options.dart';
+import '../lib/src/generator/exceptions.dart';
+import '../lib/src/generator/parser.dart';
+import '../lib/src/generator/writer.dart';
 
 void main(List<String> args) {
   final genOptions = GeneratorOptions();
