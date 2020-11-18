@@ -89,6 +89,8 @@ Future<void> _generate(GeneratorOptions options) async {
     print('\u001b[31m[ERROR] easy colors: $ex\u001b[0m');
   } on FileException catch (ex) {
     print('\u001b[31m[ERROR] easy colors: $ex\u001b[0m');
+  } on FormatException catch (ex) {
+    print('\u001b[31m[ERROR] easy colors: $ex\u001b[0m');
   } catch (e) {
     print("Unknown error occurred! $e");
   }

@@ -38,6 +38,5 @@ List<ColorVariable> parseJsonString(String input) {
   for (var kv in jsonColors.entries) {
     result.add(ColorVariable(kv.key, parseColor(kv.value)));
   }
-
   return result;
 }
