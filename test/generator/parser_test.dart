@@ -33,7 +33,7 @@ void main() {
       final parsed = parseJsonString('{"color_1": "#FF0000"}');
 
       expect(parsed, isNotEmpty);
-      expect(parsed.first.name, "color_1");
+      expect(parsed.first.name, "color1");
       expect(parsed.first.color, "Color(0xFFFF0000)");
     });
   });
@@ -83,6 +83,17 @@ void main() {
         expect((e as ParseException).message,
             equals("A color can be only a hex string or an int!"));
       }
+    });
+  });
+
+  group("Name Parser Tests", () {
+    test("parse snake case name", () {
+      expect(parseName("snake_case_1"), equals("snakeCase1"));
+      expect(parseName("snake-case_200"), equals("snakeCase200"));
+    });
+
+    test("parse single word name", () {
+      expect(parseName("colorname"), equals("colorname"));
     });
   });
 }

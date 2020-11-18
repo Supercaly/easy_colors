@@ -3,6 +3,17 @@ import 'dart:convert';
 import 'color_variable.dart';
 import 'exceptions.dart';
 
+/// Parse the [name] of the color and converts
+/// it into a camelCase string if case it is a
+/// snake_case string.
+String parseName(String name) {
+  return name.splitMapJoin(
+    RegExp(r'[-_][a-zA-Z0-9]'),
+    onMatch: (m) => m[0].substring(1).toUpperCase(),
+    onNonMatch: (nm) => nm,
+  );
+}
+
 /// Parse a color value from json to a string
 /// with dart's color like: `Color(0xFF000000)`.
 ///
@@ -45,7 +56,7 @@ List<ColorVariable> parseJsonString(String input) {
   final List<ColorVariable> result = [];
 
   for (var kv in jsonColors.entries) {
-    result.add(ColorVariable(kv.key, parseColor(kv.value)));
+    result.add(ColorVariable(parseName(kv.key), parseColor(kv.value)));
   }
   return result;
 }
