@@ -8,6 +8,8 @@ import 'exceptions.dart';
 ///
 /// A color value form json can be a string with the hex
 /// value (`#FF00FF00` or `#FF00FF`) or a 32-bit int.
+///
+/// Throws [ParseException].
 String parseColor(dynamic value) {
   String colorValue = '';
   if (value is String) {
@@ -31,8 +33,15 @@ String parseColor(dynamic value) {
 }
 
 /// Parse a json string into a list of [ColorVariable].
+///
+/// Throws [ParseException].
 List<ColorVariable> parseJsonString(String input) {
-  final Map<String, dynamic> jsonColors = json.decode(input);
+  Map<String, dynamic> jsonColors;
+  try {
+    jsonColors = json.decode(input);
+  } on FormatException catch (e) {
+    throw ParseException(e.message);
+  }
   final List<ColorVariable> result = [];
 
   for (var kv in jsonColors.entries) {
