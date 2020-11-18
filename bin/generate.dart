@@ -4,7 +4,7 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 
 import 'src/generator_options.dart';
-import 'src/parse_exceptions.dart';
+import 'src/exceptions.dart';
 import 'src/parser.dart';
 import 'src/writer.dart';
 
@@ -67,21 +67,23 @@ Future<void> _generate(GeneratorOptions options) async {
         File(path.join(current.path, output.path, options.outputName));
 
     if (!options.inputName.endsWith('.json'))
-      throw Exception("Input file must be a .json file!");
+      throw FileException("Input file must be a .json file!");
     if (!await sourceFile.exists())
-      throw Exception("Unknown file '$sourceFile'");
+      throw FileException("Unknown file '${sourceFile.path}'");
 
     final parsed = parseJsonString(await sourceFile.readAsString());
     final written = write(parsed);
 
     if (!await outputFile.exists()) await outputFile.create(recursive: true);
-
     await outputFile.writeAsString(written);
 
-    print('\u001b[32measy colors: All done! File generated in ${outputFile.path}\u001b[0m');
+    print(
+        '\u001b[32measy colors: All done! File generated in ${outputFile.path}\u001b[0m');
   } on ParseException catch (ex) {
     print('\u001b[31m[ERROR] easy colors: $ex\u001b[0m');
-  } catch(e) {
+  } on FileException catch (ex) {
+    print('\u001b[31m[ERROR] easy colors: $ex\u001b[0m');
+  } catch (e) {
     print("Unknown error occurred! $e");
   }
 }

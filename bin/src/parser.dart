@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'color_variable.dart';
-import 'parse_exceptions.dart';
+import 'exceptions.dart';
 
 /// Parse a color value from json to a string
 /// with dart's color like: `Color(0xFF000000)`.
