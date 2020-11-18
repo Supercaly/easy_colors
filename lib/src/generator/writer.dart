@@ -16,7 +16,7 @@ String write(List<ColorVariable> colorVariables) {
   }
 
   final clazz = Class((b) => b
-    ..name = "GeneratedEasyColors"
+    ..name = "EasyColors"
     ..fields.addAll(fields)
     ..constructors.add(Constructor((c) => c
       ..constant = true
