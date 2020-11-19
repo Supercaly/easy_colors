@@ -2,7 +2,7 @@
 
 ## Why easy_colors?
 
-This package as the purpose to help manage all the color resources used inside a Flutter app in 
+This package has the purpose to help manage all the color resources used inside a Flutter app in 
 a simple and fast way without the hassle of creating dart files.
 
 ## Getting Started
@@ -27,7 +27,7 @@ assets
 
 ### Content of the colors file
 
-Inside your `colors.json` file you will declare all your colors as a key-value pair where the 
+Inside your `colors.json` file you will declare all your colors as a *key-value* pair where the 
 key is the color name and the value is the color.
 
 **NOTE:** The color value can be one of:
@@ -54,7 +54,7 @@ After all the steps above are completed you are ready to execute the code genera
 
 Steps:
 1. Open your terminal in the folder's path containing your project 
-2. Run in terminal ```shell script flutter pub run easy_colors:generate```
+2. Run in terminal ```flutter pub run easy_colors:generate```
 3. Use the colors in your app 
 
 ```dart
@@ -68,7 +68,7 @@ Widget build() {
 
 4. All done!
 
-For more information run in your terminal ```shell script flutter pub run easy_colors:generate -h```
+For more information run in your terminal ```flutter pub run easy_colors:generate -h```
 
 #### Command-line arguments
 
