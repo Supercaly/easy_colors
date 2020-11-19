@@ -1,0 +1,45 @@
+name: Easy Colors CI
+
+on: [push, pull_request]
+
+jobs:
+  test-and-analyze:
+    name: Unit Test & Code Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1.4.0
+          with:
+            channel: 'dev'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Run Unit Tests
+      - name: Unit Test
+        run: flutter test
+
+      # Run Code Analysis
+      - name: Code Analysis
+        run: flutter analyze
+
+  package-score:
+    name: Evaluate package score
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Compute package score
+        uses: axel-op/dart-package-analyzer@v2
+        id: analysis
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print score
+        run: echo "${{ steps.analysis.outputs.health }}"
