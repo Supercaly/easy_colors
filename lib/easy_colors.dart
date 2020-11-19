@@ -1,2 +1,1 @@
 library easy_colors;
-

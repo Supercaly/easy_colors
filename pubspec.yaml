@@ -1,7 +1,7 @@
 name: easy_colors
 description: A Flutter package to manage custom colors used in the project
 version: 0.0.1
-repository: https://github.com/Supercaly/easy_colors
+homepage: https://github.com/Supercaly/easy_colors
 issue_tracker: https://github.com/Supercaly/easy_colors/issues
 
 environment:
