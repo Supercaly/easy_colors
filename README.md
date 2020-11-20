@@ -84,7 +84,7 @@ For more information run in your terminal ```flutter pub run easy_colors:generat
 
 - [x] Parse colors in hex string format (`#AARRGGBB`)
 - [x] Parse colors in int format (`4294967295`)
-- [] Parse colors in RGB list format (`[255, 0, 0]`)
-- [] Parse colors in ARGB list format (`[255, 255, 0, 0]`)
-- [] Parse colors in HSL list format (`[10, 0, 0]`)
-- [] Parse colors in CMYK list format (`[100, 100, 100, 100]`)
+- [ ] Parse colors in RGB list format (`[255, 0, 0]`)
+- [ ] Parse colors in ARGB list format (`[255, 255, 0, 0]`)
+- [ ] Parse colors in HSL list format (`[10, 0, 0]`)
+- [ ] Parse colors in CMYK list format (`[100, 100, 100, 100]`)
