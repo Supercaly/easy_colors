@@ -44,7 +44,7 @@ Example:
   "green": "#00FF00",
   "blue": "#0000FF",
   "black": "#FF000000",
-  "white": "#FFFFFFFF"
+  "white": "4294967295"
 }
 ```
 
@@ -79,3 +79,12 @@ For more information run in your terminal ```flutter pub run easy_colors:generat
 | --source-file | -s | colors.json | File to use for generation |
 | --output-dir | -O | lib/generated | Output folder where the generated file is stored |
 | --output-file | -o | gen_colors.g.dart | Output file name | 
+
+## To Do Features
+
+- [x] Parse colors in hex string format (`#AARRGGBB`)
+- [x] Parse colors in int format (`4294967295`)
+- [] Parse colors in RGB list format (`[255, 0, 0]`)
+- [] Parse colors in ARGB list format (`[255, 255, 0, 0]`)
+- [] Parse colors in HSL list format (`[10, 0, 0]`)
+- [] Parse colors in CMYK list format (`[100, 100, 100, 100]`)
