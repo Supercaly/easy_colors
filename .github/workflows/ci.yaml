@@ -21,7 +21,7 @@ jobs:
 
       # Run Unit Tests
       - name: Unit Test
-        run: flutter test
+        run: dart test
 
       # Run Code Analysis
       - name: Code Analysis

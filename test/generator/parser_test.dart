@@ -1,6 +1,6 @@
 import 'package:easy_colors/src/generator/exceptions.dart';
 import 'package:easy_colors/src/generator/parser.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 void main() {
   group("Json Parser Tests", () {
