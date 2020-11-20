@@ -17,14 +17,11 @@ jobs:
           channel: 'dev'
 
       - name: Install dependencies
-        run: flutter pub get && dart pub get
-
-      - name: Install dependencies in example
-        run: cd example/ && flutter pub get && cd ..
+        run: flutter pub get
 
       # Run Unit Tests
       - name: Unit Test
-        run: dart test
+        run: flutter test
 
       # Run Code Analysis
       - name: Code Analysis
