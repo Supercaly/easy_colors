@@ -25,6 +25,8 @@ String parseColor(dynamic value) {
   int? colorValue;
   if (value is String) {
     if (value.isEmpty) throw ParseException("A color hex can't be empty!");
+    if (!value.startsWith("#"))
+      throw ParseException("Color $value does not start with # character!");
     final buffer = StringBuffer();
     if (value.length == 6 || value.length == 7) buffer.write("FF");
     buffer.write(value.replaceFirst("#", ""));
