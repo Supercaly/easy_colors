@@ -35,28 +35,28 @@ ArgParser _generateArgParser(GeneratorOptions options) {
     abbr: 'S',
     defaultsTo: 'assets',
     help: "Folder of the colors file.",
-    callback: (String x) => options.inputDir = x,
+    callback: (String? x) => options.inputDir = x,
   );
   parser.addOption(
     'source-file',
     abbr: 's',
     defaultsTo: 'colors.json',
     help: "File .json with the colors.",
-    callback: (String x) => options.inputName = x,
+    callback: (String? x) => options.inputName = x,
   );
   parser.addOption(
     'output-dir',
     abbr: 'O',
     defaultsTo: 'lib/generated',
     help: "Folder where the generated file is stored.",
-    callback: (String x) => options.outputDir = x,
+    callback: (String? x) => options.outputDir = x,
   );
   parser.addOption(
     'output-file',
     abbr: 'o',
     defaultsTo: 'gen_colors.g.dart',
     help: "Name of the generated file",
-    callback: (String x) => options.outputName = x,
+    callback: (String? x) => options.outputName = x,
   );
   return parser;
 }
@@ -65,14 +65,14 @@ ArgParser _generateArgParser(GeneratorOptions options) {
 Future<void> _generate(GeneratorOptions options) async {
   try {
     final current = Directory.current;
-    final source = Directory.fromUri(Uri.parse(options.inputDir));
-    final output = Directory.fromUri(Uri.parse(options.outputDir));
+    final source = Directory.fromUri(Uri.parse(options.inputDir!));
+    final output = Directory.fromUri(Uri.parse(options.outputDir!));
     final sourceFile =
         File(path.join(current.path, source.path, options.inputName));
     final outputFile =
         File(path.join(current.path, output.path, options.outputName));
 
-    if (!options.inputName.endsWith('.json'))
+    if (!options.inputName!.endsWith('.json'))
       throw FileException("Input file must be a .json file!");
     if (!await sourceFile.exists())
       throw FileException("Unknown file '${sourceFile.path}'");

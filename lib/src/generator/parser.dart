@@ -9,7 +9,7 @@ import 'exceptions.dart';
 String parseName(String name) {
   return name.splitMapJoin(
     RegExp(r'[-_][a-zA-Z0-9]'),
-    onMatch: (m) => m[0].substring(1).toUpperCase(),
+    onMatch: (m) => m[0]!.substring(1).toUpperCase(),
     onNonMatch: (nm) => nm,
   );
 }
