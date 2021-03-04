@@ -6,10 +6,7 @@ class EasyColors {
   const EasyColors._();
 
   static const Color black = Color(0xFF000000);
-
   static const Color white = Color(4294967295);
-
   static const Color indianRed = Color(0xFFCD5C5C);
-
   static const Color salmon = Color(0xFFFA8072);
 }
