@@ -4,18 +4,18 @@ version: 1.0.0+1
 publish_to: 'none'
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
-  easy_colors:
-    path: ../
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  easy_colors:
+    path: ../
 
 flutter:
   uses-material-design: true
