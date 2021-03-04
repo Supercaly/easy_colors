@@ -4,9 +4,9 @@ import 'package:flutter/painting.dart';
 
 class EasyColors {
   const EasyColors._();
-
-  static const Color black = Color(0xFF000000);
+  
+  static const Color black = Color(4278190080);
   static const Color white = Color(4294967295);
-  static const Color indianRed = Color(0xFFCD5C5C);
-  static const Color salmon = Color(0xFFFA8072);
+  static const Color indianRed = Color(4291648604);
+  static const Color salmon = Color(4294606962);
 }

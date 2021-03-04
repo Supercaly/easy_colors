@@ -22,22 +22,15 @@ String parseName(String name) {
 ///
 /// Throws [ParseException].
 String parseColor(dynamic value) {
-  String colorValue = '';
+  int? colorValue;
   if (value is String) {
-    String sValue = value.trim();
-    // Check that the value is a correct hex string
-    if (!sValue.startsWith('#'))
-      throw ParseException("Color $sValue does not start with # character!");
-    sValue = sValue.substring(1);
-    // A valid hex color has length 6 or 8 (can have alpha or not)
-    if (sValue.length != 6 && sValue.length != 8)
-      throw ParseException(
-          "Hex color must be in the form #FFCD5C5C or #CD5C5C");
-    if (sValue.length == 6) sValue = "FF$sValue";
-
-    colorValue = "0x${sValue.toUpperCase()}";
+    if (value.isEmpty) throw ParseException("A color hex can't be empty!");
+    final buffer = StringBuffer();
+    if (value.length == 6 || value.length == 7) buffer.write("FF");
+    buffer.write(value.replaceFirst("#", ""));
+    colorValue = int.parse(buffer.toString(), radix: 16);
   } else if (value is int) {
-    colorValue = value.toString();
+    colorValue = value;
   } else
     throw ParseException("A color can be only a hex string or an int!");
   return "Color($colorValue)";
